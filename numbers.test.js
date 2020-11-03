@@ -1,5 +1,5 @@
-const { expect } = require('@jest/globals');
-const {getNumbers} = require('./numbers');
+
+const {getNumbers,getChapter, getVerse} = require('./numbers');
 
 describe('getNumbers', ()=>{
   test('returns empty array ', () => {
@@ -33,4 +33,27 @@ test('only 2 mishnayos', () => {
 test('only 3 mishnayos', () => {
   expect(getNumbers(1.5,1.7)).toEqual([1.5,1.6,1.7])
 });
+});
+
+
+describe('getChapter', ()=>{
+test("returns empty string", ()=>{
+expect(getChapter()).toBe('')
 })
+test('simple cases ', () => {
+  expect(getChapter(1.5)).toBe(1)
+   expect(getChapter(1.9)).toBe(1)
+    expect(getChapter(25.13)).toBe(25)
+});
+});
+
+describe('getVerse', ()=>{
+test("returns empty string", ()=>{
+expect(getVerse()).toBe('')
+})
+test('simple cases ', () => {
+  expect(getVerse(1.5)).toBe(5)
+   expect(getVerse(1.9)).toBe(9)
+    expect(getVerse(25.13)).toBe(13)
+});
+});

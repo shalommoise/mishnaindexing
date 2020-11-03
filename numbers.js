@@ -26,3 +26,14 @@ if(funStart + 1 === funEnd) mishnayos = [funStart, funEnd]
 if(funStart + 2 === funEnd) mishnayos = [funStart, funEnd-1, funEnd]
 return mishnayos.map((mishna)=> mishna/10)
 }
+exports.getChapter =(num)=>{
+  if(!num) return '';
+  return Math.floor(num);
+};
+
+exports.getVerse =(num)=>{
+    if(!num) return '';
+const str = num.toString();
+ const arr = str.split(".");
+ return Number(arr[1]);
+}
