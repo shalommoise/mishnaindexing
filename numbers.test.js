@@ -20,5 +20,10 @@ test('random tests', ()=>{
   expect(getNumbers(1.5,2.1)).toEqual([1.5,1.6,1.7, 2.1]);
    expect(getNumbers(1.6,2.1)).toEqual([1.6,1.7,1.8, 2.1]);
    expect(getNumbers(30.5,30.8)).toEqual([30.5,30.6,30.7,30.8]);
+ 
 })
+test('two chapters', () => {
+    expect(getNumbers(12.3,14.1)).toEqual([12.3,13.1,13.2,14.1]);
+      expect(getNumbers(12.3,14.2)).toEqual([12.3,13.1,14.1,14.2]);
+});
 })
