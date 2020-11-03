@@ -1,3 +1,4 @@
+const { expect } = require('@jest/globals');
 const {getNumbers} = require('./numbers');
 
 describe('getNumbers', ()=>{
@@ -25,5 +26,11 @@ test('random tests', ()=>{
 test('two chapters', () => {
     expect(getNumbers(12.3,14.1)).toEqual([12.3,13.1,13.2,14.1]);
       expect(getNumbers(12.3,14.2)).toEqual([12.3,13.1,14.1,14.2]);
+});
+test('only 2 mishnayos', () => {
+  expect(getNumbers(1.5,1.6)).toEqual([1.5,1.6])
+});
+test('only 3 mishnayos', () => {
+  expect(getNumbers(1.5,1.7)).toEqual([1.5,1.6,1.7])
 });
 })

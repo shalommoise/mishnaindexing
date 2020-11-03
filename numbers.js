@@ -22,6 +22,7 @@ if( funEnd.toString().endsWith('1')){
    mishnayos = [funStart,Math.floor(start + 1)*10 + 1, Math.floor(start + 1)*10 + 2, funEnd];
 }
 }
-
+if(funStart + 1 === funEnd) mishnayos = [funStart, funEnd]
+if(funStart + 2 === funEnd) mishnayos = [funStart, funEnd-1, funEnd]
 return mishnayos.map((mishna)=> mishna/10)
 }
