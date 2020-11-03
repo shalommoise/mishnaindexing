@@ -1,6 +1,6 @@
 const hebrewNumeralsSmall = ['','א',"ב","ג","ד","ה","ו","ז","ח","ט","י"]
 const hebrewNumeralsBig =['', 'י','כ','ל','מ','נ','ס','ע','פ','צ','ק']
-exports.convert =(num)=>{
+const convert =(num)=>{
   if(!num) num = 0;
 
 const big = Math.floor(num/10);
@@ -14,6 +14,10 @@ return hebrewNumeralsBig[big] +hebrewNumeralsSmall[small]
 
 }
 
-exports.mishnaNumbers =(arr)=>{
+const mishnaNumbers =(digits)=>{
+if(!digits) return ''
+const arr = digits.toString().split(".")
 
+  return `${convert(arr[0])}:${convert(arr[1])}`
 }
+module.exports = {convert, mishnaNumbers}

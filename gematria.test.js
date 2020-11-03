@@ -1,5 +1,6 @@
 
 
+const { describe, expect } = require('@jest/globals');
 const {convert, mishnaNumbers}= require('./gemetria');
 
 describe('convert()', ()=>{
@@ -44,4 +45,14 @@ test('15 & 16 (unique cases)', ()=>{
 
 })
   })
+})
+
+describe('mishnaNumbers()', ()=>{
+  test('returns empty string', () => {
+    expect(mishnaNumbers()).toBe('')
+  });
+  test('works for simple case', () => {
+    expect(mishnaNumbers(1.1)).toBe("א:א");
+    expect(mishnaNumbers(15.24)).toBe("טו:כד")
+  });
 })
