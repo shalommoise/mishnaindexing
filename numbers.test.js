@@ -24,15 +24,28 @@ test('random tests', ()=>{
  
 })
 test('two chapters', () => {
+ 
     expect(getNumbers(12.3,14.1)).toEqual([12.3,13.1,13.2,14.1]);
-      expect(getNumbers(12.3,14.2)).toEqual([12.3,13.1,14.1,14.2]);
+     expect(getNumbers(12.3,14.2)).toEqual([12.3,13.1,14.1,14.2]);
 });
 test('only 2 mishnayos', () => {
   expect(getNumbers(1.5,1.6)).toEqual([1.5,1.6])
 });
 test('only 3 mishnayos', () => {
+
   expect(getNumbers(1.5,1.7)).toEqual([1.5,1.6,1.7])
 });
+test('1.3-1.6', () => {
+
+  expect(getNumbers(1.3,1.6)).toEqual([1.3,1.4,1.5,1.6])
+});
+test('2.2-2.5', () => {
+  expect(getNumbers(2.2,2.5)).toEqual([2.2,2.3,2.4,2.5])
+});
+test('14.7-14.10', ()=>{
+ 
+  expect(getNumbers(14.7,14.10)).toEqual([14.7,14.8,14.9,14.10])
+})
 });
 
 

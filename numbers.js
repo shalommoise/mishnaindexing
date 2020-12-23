@@ -1,30 +1,19 @@
 exports.getNumbers = (start, end)=>{
   let mishnayos = []
-if(!start && !end) return mishnayos;
-const funStart = start*10;
-const funEnd =end*10;
-
-
-mishnayos = [funStart, funStart +1, funEnd -1, funEnd];
-
-if(Math.round(end)-Math.round(start)){
-
-   mishnayos = [funStart,Math.floor(start + 1)*10 + 1, funEnd -1, funEnd];
-}
-
-if( funEnd.toString().endsWith('3')){
-  mishnayos = [funStart, funEnd -2, funEnd -1, funEnd];
-}
-if( funEnd.toString().endsWith('1')){
-  mishnayos = [funStart, funStart +1, funStart +2, funEnd];
-  if(Math.round(end)-Math.round(start)){
-
-   mishnayos = [funStart,Math.floor(start + 1)*10 + 1, Math.floor(start + 1)*10 + 2, funEnd];
-}
-}
-if(funStart + 1 === funEnd) mishnayos = [funStart, funEnd]
-if(funStart + 2 === funEnd) mishnayos = [funStart, funEnd-1, funEnd]
-return mishnayos.map((mishna)=> mishna/10)
+  const mulpStart = start * 10;
+  const mulpEnd = end *10;
+  if(!start || !end) return mishnayos;
+  if(start && end) mishnayos = [mulpStart, mulpStart + 1, mulpEnd - 1,mulpEnd]
+  if(end.toString().endsWith("3")) mishnayos = [mulpStart,mulpEnd -2, mulpEnd -1, mulpEnd];
+  if(end.toString().endsWith("1")) mishnayos = [mulpStart,mulpStart +1, mulpStart +2, mulpEnd];
+  if(end > start + 1) { 
+    const newChapter = Math.floor(start + 1 )*10 
+   if(end.toString().endsWith("1"))  mishnayos = [mulpStart,newChapter +1, newChapter +2, mulpEnd];
+   if(end.toString().endsWith("2"))  mishnayos = [mulpStart,newChapter +1, mulpEnd - 1, mulpEnd];
+  }
+  if(mulpStart + 1 === mulpEnd) mishnayos =[mulpStart, mulpEnd];
+  if(mulpStart +1 === mulpEnd - 1) mishnayos =[mulpStart, mulpStart +1 , mulpEnd];
+   return mishnayos.map(mishna=> mishna/10);
 }
 exports.getChapter =(num)=>{
   if(!num) return '';
