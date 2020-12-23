@@ -2,7 +2,8 @@ exports.getNumbers = (start, end)=>{
   let mishnayos = []
   const mulpStart = start * 10;
   const mulpEnd = end *10;
-  if(!start || !end) return mishnayos;
+  if(!start) return mishnayos;
+  if(!end) return [start.toString()];
   if(start && end) mishnayos = [mulpStart, mulpStart + 1, mulpEnd - 1,mulpEnd]
   if(end.toString().endsWith("3")) mishnayos = [mulpStart,mulpEnd -2, mulpEnd -1, mulpEnd];
   if(end.toString().endsWith("1")) mishnayos = [mulpStart,mulpStart +1, mulpStart +2, mulpEnd];
@@ -13,7 +14,12 @@ exports.getNumbers = (start, end)=>{
   }
   if(mulpStart + 1 === mulpEnd) mishnayos =[mulpStart, mulpEnd];
   if(mulpStart +1 === mulpEnd - 1) mishnayos =[mulpStart, mulpStart +1 , mulpEnd];
-   return mishnayos.map(mishna=> mishna/10);
+ const answer =  mishnayos.map(mishna=> (mishna/10).toString());
+ answer.forEach((num, i)=>{
+  if(num % 1 === 0) {answer[i] -= 1; answer[i] += ".10"}
+     if(num < answer[i - 1]) answer[i] += "0"
+ })  
+ return answer;
 }
 exports.getChapter =(num)=>{
   if(!num) return '';
